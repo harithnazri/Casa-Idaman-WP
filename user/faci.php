@@ -1,3 +1,7 @@
+<?php
+session_start();
+include "../php/db_conn.php";
+if (isset($_SESSION['username']) && isset($_SESSION['id'])) ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,13 +88,14 @@
 <div class="container mx-auto " style="margin-top: 20vh;">
     <div class="pt-3  mb-3">
         <h3 class="text-white text-center mb-5">Explore Our <span style="color: #d3ad7f;">Facilities</span> </h3>
+        <h6 class="text-white text-center mb-5"><a href="../user/reservationform.html" style="color: #d3ad7f;">Make a reservation here.</span> </h6>
     </div>
     
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-3" >
-            <div class="card" style="width: 18rem; border-radius: 20px;">
+            <div class="card col-md-3" style="width: 18rem; border-radius: 20px; margin: 20px;">
                 <img src="../pic/lounge.png" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
+                <div class="card-body" style="color:black;">
                     <h5 class="card-title">Lounge</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Lobi</h6>
                     <p class="card-text">Whether it's just a cup of coffee or even something stronger, we serve only the best.</p>
@@ -155,9 +160,9 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3 ">
-            <div class="card" style="width: 18rem; border-radius: 20px;">
+            <div class="card col-md-3" style="width: 18rem; border-radius: 20px; margin: 20px;">
                 <img src="../pic/pool.jpg" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
+                <div class="card-body" style="color:black;">
                     <h5 class="card-title">Swimming Pool</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Kolam Renang</h6>
                     <p class="card-text">Located in the heart of Casa Idaman, complete with a children’s wading pool with water slides.</p>
@@ -221,9 +226,9 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 ">
-            <div class="card" style="width: 18rem; border-radius: 20px;">
+            <div class="card col-md-3" style="width: 18rem; border-radius: 20px; margin: 20px;">
                 <img src="../pic/gym.png" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
+                <div class="card-body" style="color:black;">
                     <h5 class="card-title">Gymnasium</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Gimnasium</h6>
                     <p class="card-text">The gym and fitness centre feature a variety of state-of-the-art cardio and strength training equipment.</p>
@@ -288,9 +293,9 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3 ">
-            <div class="card" style="width: 18rem; border-radius: 20px;" >
+            <div class="card col-md-3" style="width: 18rem; border-radius: 20px; margin: 20px;">
                 <img src="https://images.unsplash.com/photo-1606157715703-ebbcfb43158a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
+                <div class="card-body" style="color:black;">
                     <h5 class="card-title">Barbeque Pit</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                     <p class="card-text">We provide marinated raw food, frozen food, raw seafood and BBQ pit set.</p>
@@ -354,10 +359,10 @@
         </div>
         
         <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="card" style="width: 18rem; border-radius: 20px;">
+            <div class="card col-md-3" style="width: 18rem; border-radius: 20px; margin: 20px;">
             
                 <img src="https://images.unsplash.com/photo-1487466365202-1afdb86c764e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
+                <div class="card-body" style="color:black;">
                     <h5 class="card-title">Football Field</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Padang Bola</h6>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -422,10 +427,10 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="card" style="width: 18rem; border-radius: 20px;">
+            <div class="card col-md-3" style="width: 18rem; border-radius: 20px; margin: 20px;">
             
                 <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1164&q=80" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
+                <div class="card-body" style="color:black;">
                     <h5 class="card-title">Kuala Lumpur City Centre</h5>
                     <h6 class="card-subtitle mb-2 text-muted">KLCC</h6>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -490,10 +495,10 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="card" style="width: 18rem; border-radius: 20px;" >
+            <div class="card col-md-3" style="width: 18rem; border-radius: 20px; margin: 20px;">
             
                 <img src="https://images.unsplash.com/photo-1591453022135-9ea84127b8ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fGJhemFhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
+                <div class="card-body" style="color:black;">
                     <h5 class="card-title">Danau Kota Uptown</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Bazaar Wangsa Maju</h6>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -558,9 +563,9 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="card" style="width: 18rem; border-radius: 20px;">
+            <div class="card col-md-3" style="width: 18rem; border-radius: 20px; margin: 20px;">
                 <img src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
+                <div class="card-body" style="color:black;">
                     <h5 class="card-title">KL East Mall</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Pusat Beli-belah</h6>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -590,275 +595,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="card" style="width: 18rem; border-radius: 20px;">
-                <img src="https://images.unsplash.com/photo-1572186305383-484a525fdd38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmVkZXJhbCUyMHRlcnJpdG9yeSUyMG1vc3F1ZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
-                    <h5 class="card-title">Federal Territory Mosque</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Masjid Wilayah</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn mr-2"><i class="fa-solid fa-location-dot"></i> Locate</a>
-                    <a href="#" class="btn mx-2" data-bs-target="#exampleModalToggle9" data-bs-toggle="modal"><i class="fa-solid fa-circle-info"></i> Details</a>
-                </div>
-            </div>
-            <div class="modal fade" id="exampleModalToggle9" aria-hidden="true" aria-labelledby="exampleModalToggleLabel9"
-                tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel9" style="color: #777;">Federal Territory Mosque
-                            </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <!-- Federal Mosque Carousel -->
-                        <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-
-                                <div class="carousel-item active" data-bs-interval="7500">
-                                    <img src="https://petapixel.com/assets/uploads/2011/04/singlelight.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h4> Lounge </h4>
-                                        <i class="fa-solid fa-wind"></i> &nbsp; Air-conditioned <br>
-                                        <i class="bi bi-stars"></i></i> &nbsp; Sanitized frequently <br>
-                                        <i class="bi bi-person"></i> &nbsp; Membership discount <br>
-                                    </div>
-                                </div>
-                                
-                                <div class="carousel-item" data-bs-interval="7500">
-                                    <img src="https://cyneats.com/wp-content/uploads/2017/01/Black-Cat_-Live-Music-In-SF-14-of-14.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h4> Lounge </h4>
-                                        <i class="fa-solid fa-wind"></i> &nbsp; Air-conditioned <br>
-                                        <i class="bi bi-stars"></i></i> &nbsp; Sanitized frequently <br>
-                                        <i class="bi bi-person"></i> &nbsp; Membership discount <br>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <!-- End Federal Mosque Carousel -->
-                        <div class="modal-body" style="color: gray;">
-                            Tel: +6012 3456 789 <br>
-                            Email: casaidaman_lounge@gmail.com <br>
-                            Open Hours: Monday - Sunday / 3pm - 12am <br>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="card" style="width: 18rem; border-radius: 20px;">
-                <img src="https://images.unsplash.com/photo-1601841197690-6f0838bdb005?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
-                    <h5 class="card-title">Kuala Lumpur Hospital</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Hospital Kuala Lumpur</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="https://www.google.com/maps/place/Kuala+Lumpur+General+Hospital/@3.1981201,101.6747298,14z/data=!4m12!1m6!3m5!1s0x31cc479d49e4dddb:0x328c1392f25940c5!2sCasa+Idaman+Condominium+-+Block+B!8m2!3d3.2044919!4d101.6810259!3m4!1s0x31cc4818bac57b15:0x46fc8dd0d036613c!8m2!3d3.1715361!4d101.7025421" class="btn mr-2"><i class="fa-solid fa-location-dot"></i> Locate</a>
-                    <a href="#" class="btn mx-2" data-bs-target="#exampleModalToggle10" data-bs-toggle="modal"><i class="fa-solid fa-circle-info"></i> Details</a>
-                </div>
-            </div>
-            <div class="modal fade" id="exampleModalToggle10" aria-hidden="true" aria-labelledby="exampleModalToggleLabel10"
-                tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel10" style="color: #777;">Kuala Lumpur Hospital
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <!-- KL Hospital Carousel -->
-                        <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-
-                                <div class="carousel-item active" data-bs-interval="7500">
-                                    <img src="https://petapixel.com/assets/uploads/2011/04/singlelight.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h4> Lounge </h4>
-                                        <i class="fa-solid fa-wind"></i> &nbsp; Air-conditioned <br>
-                                        <i class="bi bi-stars"></i></i> &nbsp; Sanitized frequently <br>
-                                        <i class="bi bi-person"></i> &nbsp; Membership discount <br>
-                                    </div>
-                                </div>
-                                
-                                <div class="carousel-item" data-bs-interval="7500">
-                                    <img src="https://cyneats.com/wp-content/uploads/2017/01/Black-Cat_-Live-Music-In-SF-14-of-14.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h4> Lounge </h4>
-                                        <i class="fa-solid fa-wind"></i> &nbsp; Air-conditioned <br>
-                                        <i class="bi bi-stars"></i></i> &nbsp; Sanitized frequently <br>
-                                        <i class="bi bi-person"></i> &nbsp; Membership discount <br>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <!-- End KL Hospital Carousel -->
-                        <div class="modal-body" style="color: gray;">
-                            Tel: +6012 3456 789 <br>
-                            Email: casaidaman_lounge@gmail.com <br>
-                            Open Hours: Monday - Sunday / 3pm - 12am <br>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="card" style="width: 18rem; border-radius: 20px;">
-                <img src="https://images.unsplash.com/photo-1510521212584-6d33ce4408d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1179&q=80" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
-                    <h5 class="card-title">Sentul Community Park</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Taman Komuniti Sentul </h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="https://www.google.com/maps/place/Sentul+Park/@3.1932552,101.6818902,15.5z/data=!4m12!1m6!3m5!1s0x31cc479d49e4dddb:0x328c1392f25940c5!2sCasa+Idaman+Condominium+-+Block+B!8m2!3d3.2044919!4d101.6810259!3m4!1s0x31cc480b7f2424f1:0x6c793ca11bc61b25!8m2!3d3.1862882!4d101.6867515" class="btn mr-2"><i class="fa-solid fa-location-dot"></i> Locate</a>
-                    <a href="#" class="btn mx-2" data-bs-target="#exampleModalToggle11" data-bs-toggle="modal"><i class="fa-solid fa-circle-info"></i> Details</a>
-                </div>
-            </div>
-            <div class="modal fade" id="exampleModalToggle11" aria-hidden="true" aria-labelledby="exampleModalToggleLabel11"
-                tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel11" style="color: #777;">Sentul Community Park
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <!-- Sentul Park Carousel -->
-                        <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-
-                                <div class="carousel-item active" data-bs-interval="7500">
-                                    <img src="https://petapixel.com/assets/uploads/2011/04/singlelight.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h4> Lounge </h4>
-                                        <i class="fa-solid fa-wind"></i> &nbsp; Air-conditioned <br>
-                                        <i class="bi bi-stars"></i></i> &nbsp; Sanitized frequently <br>
-                                        <i class="bi bi-person"></i> &nbsp; Membership discount <br>
-                                    </div>
-                                </div>
-                                
-                                <div class="carousel-item" data-bs-interval="7500">
-                                    <img src="https://cyneats.com/wp-content/uploads/2017/01/Black-Cat_-Live-Music-In-SF-14-of-14.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h4> Lounge </h4>
-                                        <i class="fa-solid fa-wind"></i> &nbsp; Air-conditioned <br>
-                                        <i class="bi bi-stars"></i></i> &nbsp; Sanitized frequently <br>
-                                        <i class="bi bi-person"></i> &nbsp; Membership discount <br>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <!-- End Sentul Park Carousel -->
-                        <div class="modal-body" style="color: gray;">
-                            Tel: +6012 3456 789 <br>
-                            Email: casaidaman_lounge@gmail.com <br>
-                            Open Hours: Monday - Sunday / 3pm - 12am <br>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="card" style="width: 18rem; border-radius: 20px;">
-                <img src="https://images.unsplash.com/photo-1577013346944-b35a0ce4a60a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80" class="card-img-top" alt="..." style="border-radius: 20px 20px 0 0;">
-                <div class="card-body">
-                    <h5 class="card-title">Batu Muda KTM Station</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Stesen KTM Batu Muda</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="https://www.google.com/maps/place/Kampung+Batu/@3.2046111,101.6756229,19z/data=!4m12!1m6!3m5!1s0x31cc472daa60941f:0x3c29bd0796407b22!2sKTM+Kampung+Batu+-+Lobby+Car+Park!8m2!3d3.2045839!4d101.6755516!3m4!1s0x31cc47c44b07d121:0x4bee4dee1292e50c!8m2!3d3.20482!4d101.6756" class="btn mr-2"><i class="fa-solid fa-location-dot"></i> Locate</a>
-                    <a href="#" class="btn mx-2" data-bs-target="#exampleModalToggle12" data-bs-toggle="modal"><i class="fa-solid fa-circle-info"></i> Details</a>
-                </div>
-            </div>
-            <div class="modal fade" id="exampleModalToggle12" aria-hidden="true" aria-labelledby="exampleModalToggleLabel12"
-                tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalToggleLabel12" style="color: #777;">Batu Muda KTM Station
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <!-- Batu Muda KTM Carousel -->
-                        <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-
-                                <div class="carousel-item active" data-bs-interval="7500">
-                                    <img src="https://petapixel.com/assets/uploads/2011/04/singlelight.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h4> Lounge </h4>
-                                        <i class="fa-solid fa-wind"></i> &nbsp; Air-conditioned <br>
-                                        <i class="bi bi-stars"></i></i> &nbsp; Sanitized frequently <br>
-                                        <i class="bi bi-person"></i> &nbsp; Membership discount <br>
-                                    </div>
-                                </div>
-                                
-                                <div class="carousel-item" data-bs-interval="7500">
-                                    <img src="https://cyneats.com/wp-content/uploads/2017/01/Black-Cat_-Live-Music-In-SF-14-of-14.jpg" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h4> Lounge </h4>
-                                        <i class="fa-solid fa-wind"></i> &nbsp; Air-conditioned <br>
-                                        <i class="bi bi-stars"></i></i> &nbsp; Sanitized frequently <br>
-                                        <i class="bi bi-person"></i> &nbsp; Membership discount <br>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <!-- End Batu Muda KTM Carousel -->
-                        <div class="modal-body" style="color: gray;">
-                            Tel: +6012 3456 789 <br>
-                            Email: casaidaman_lounge@gmail.com <br>
-                            Open Hours: Monday - Sunday / 3pm - 12am <br>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
-
 <!-- footer section starts  -->
 
 <section class="footer">

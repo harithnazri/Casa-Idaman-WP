@@ -31,6 +31,14 @@
                                         <?php } ?>
                                     </div>
                                     <div class="form-outline mb-4 ">
+                                        <label class="form-label">Email</label>
+                                        <?php if (isset($_GET['email'])) { ?>
+                                            <input type="email" name="username" value="<?php echo $_GET['email']; ?>"><br>
+                                        <?php } else { ?>
+                                            <input type="email" class="form-control" name="email" p><br>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="form-outline mb-4 ">
                                         <label class="form-label">Username</label>
                                         <?php if (isset($_GET['username'])) { ?>
                                             <input type="text" name="username" value="<?php echo $_GET['username']; ?>"><br>

@@ -53,7 +53,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['id'])) {   ?>
                                     <a class="nav-link text-white nav-list " href="../user/home.php">Home</a>
                                 </li>
                                 <li class="nav-item navi">
-                                    <a class="nav-link text-white" href="#facility">Managing resident's Acc</a>
+                                    <a class="nav-link text-white" href="./">Managing resident's Acc</a>
                                 </li>
                                 <li class="nav-item navi">
                                     <a class="nav-link text-white" href="#">Covid-19 Reports</a>
@@ -150,10 +150,10 @@ if (isset($_SESSION['username']) && isset($_SESSION['id'])) {   ?>
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ms-auto ">
                                 <li class="nav-item navi">
-                                    <a class="nav-link text-white nav-list " href="#">Home</a>
+                                    <a class="nav-link text-white nav-list " href="../user/home.php">Home</a>
                                 </li>
                                 <li class="nav-item navi">
-                                    <a class="nav-link text-white" href="../onlineCommunitySystem/faci.php">Facilities</a>
+                                    <a class="nav-link text-white" href="../user/faci.php">Facilities</a>
                                 </li>
                                 <li class="nav-item navi">
                                     <a class="nav-link text-white nav-list " href="./visitor.php">Visitor</a>

@@ -76,7 +76,7 @@
                     <p class="my-4">Being a part of a community might make us feel like we're a part of something bigger than ourselves. It can provide us
                         with opportunity to interact with others, achieve our goals, and feel protected and secure. It is essential for everyone
                         to have a sense of community.</p>
-                    <a href="login.php" class="btn btn-main btn-login  ">LOGIN</a>
+                    <a href="/login.php" class="btn btn-main btn-login  ">LOGIN</a>
                 </div>
             </div>
         </div>

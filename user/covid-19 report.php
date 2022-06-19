@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 
     <head>
@@ -23,7 +26,7 @@
   <nav class="navbar fixed-top navbar-expand-lg navbar-light  navigation bg-transparent   ">
       <div class="container">
           <div style="display: flex; align-items:center;">
-              <a class="navbar-brand" href="../user/home.html"><img class="logo" src="../pic/casaidaman.png" width="180px" alt=""></a>
+              <a class="navbar-brand" href="../user/home.php"><img class="logo" src="../pic/casaidaman.png" width="180px" alt=""></a>
               <h3 style="font-weight: 800; font-size: 24px; color: #ffffff;">Casa Idaman</h3>
           </div>
 
@@ -35,7 +38,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ms-auto ">
                   <li class="nav-item navi">
-                      <a class="nav-link text-white nav-list " href="../user/home.html">Home</a>
+                      <a class="nav-link text-white nav-list " href="../user/home.php">Home</a>
                   </li>
                   <li class="nav-item navi">
                       <a class="nav-link text-white" href="../user/faci.html">Facilities</a>
@@ -45,14 +48,17 @@
                   </li>
                   <li class="nav-item navi">
 
-                      <a class="nav-link text-white" href="../user/covid-19 status.html">Covid-19 Status</a>
+                      <a class="nav-link text-white" href="../user/covid-19 status.php">Covid-19 Status</a>
 
                   </li>
                   <li class="nav-item navi">
 
-                      <a class="nav-link text-white" href="../user/profile.html"><i
-                              class="fa-solid fa-circle-user"></i> Sam</a>
-
+                      <a class="nav-link text-white" href="../user/profile.php"><i
+                              class="fa-solid fa-circle-user"></i>
+                              <?php
+                                echo $_SESSION['username'];
+                              ?>
+                            </a>
                   </li>
 
                   <li class="nav-item navi">
@@ -70,47 +76,42 @@
 <body class="bg-dark text-white">
   <br><br><br>
     <div class="col d-flex justify-content-center">
-    <div class="col-xs-9 col-md-7 ">
+    <div class="col-xs-9 col-md-6">
     <div class="card" style="border-radius: 15px; background-color: rgba(251, 251, 251, 0.175);">
         <div class="card-body p-5">
             <h2 class="text-uppercase text-center mb-5"> <img src="../pic/casaidaman.png" width="130px" alt=""> Quarantine Report</h2>
             <h6 class="fw-light">Report your resident quarantine status by filling the form below.</h6><br>
-
-            <form action="c19statusconnection.php" method="post">
-              <div class="mb-3">
-                <label for=status>What is your status? </label><br>
-                <select class="form-select" id="status" name="c19status">
-                  <option value="positive"> Covid-19 Positive</option>
-                  <option value="close"> Close Contact</option>
+            <form method="post", action="../php/process-report.php" enctype = "multipart/form-data">
+            <div class="mb-3">
+                <label for="houseNum">House Number: </label>
+                <input type="text" class="form-control" id ="houseNum" name="houseNum" required>
+            </div>
+            <div class="mb-3">
+                <label for=stats>What is your status? </label><br>
+                <select class="form-select" name="stats">
+                  <option value="Covid-19 Positive"> Covid-19 Positive</option>
+                  <option value="Close Contact"> Close Contact</option>
                 </select>
               </div>
               <div class="mb-3">
-                <label for="photo">Upload your evidence:</label>
-                <input type="file" class="form-control" id ="photo" name="myEvidence">
+                <label for="evidence">Upload your evidence:</label>
+                <input type="file" class="form-control" name="evidence" required>
               </div>
               <div class="mb-3">
-                <label for="time">When does your quarantine starts?</label>
-                <input type="datetime-local" class="form-control" id="time" name="myQuarantineStarts">
+                <label for="quarantineStarts">When does your quarantine starts?</label>
+                <input type="date" class="form-control" id="quarantineStarts" name="quarantineStarts" required>
               </div>
               <div class="mb-3">
-               <label for="time">When does your quarantine ends?</label>
-                <input type="datetime-local" class="form-control" id="time" name="myQuarantineEnds">
+               <label for="quarantineEnds">When does your quarantine ends?</label>
+                <input type="date" class="form-control" id="quarantineEnds" name="quarantineEnds" required>
               </div><br>
-              <a href="covid-19 status.html" class="btn btn-primary" role="button" >Cancel</a>
-              <button class="btn btn-dark" type="submit" value="Submit" onclick="mySubmit()">Submit</button>
+              <a href="../user/covid-19 status.php" class="btn btn-primary" role="button" >Cancel</a>
+              <button class="btn btn-dark" type="submit" value="submit">Submit</button>
             </form>   
-
         </div>
     </div>
     </div>
 </div>
-	
-    <script>
-      function mySubmit(){
-        alert("You submitted a report")
-        window.location.href="covid-19 status.html"       
-      }
-    </script>
 
   <section class="footer">
     
@@ -123,11 +124,11 @@
       </div>
   
       <div class="links">
-          <a href="../user/home.html">home</a>
+          <a href="../user/home.PHP">home</a>
           <a href="../user/faci.html">facilities</a>
           <a href="../user/visitor.html">visitor</a>
-          <a href="../user/covid-19 status.html">covid-19 status</a>
-          <a href="../user/profile.html">Profile</a>
+          <a href="../user/covid-19 status.PHP">covid-19 status</a>
+          <a href="../user/profile.PHP">Profile</a>
   
       </div>
   
