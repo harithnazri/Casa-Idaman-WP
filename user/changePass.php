@@ -29,6 +29,9 @@ if (isset($_POST['op']) && isset($_POST['np'])
     }else if($np !== $c_np){
       header("Location: changePass.php?error=The confirmation password  does not match");
 	  exit();
+    }else if($op !== $_SESSION["password"]){
+      header("Location: changePass.php?error=The old password is wrong");
+    exit();
     }else {
     	/* hashing the password
     	$op = md5($op);
