@@ -3,10 +3,10 @@ session_start();
 include("../php/db_conn.php");
 
     $reportid = $_GET['reportid'];
-    $report = "SELECT reportid, username, houseNum, stats,evidence, quarantineStarts, quarantineEnds FROM quarantine WHERE reportid='$reportid'";
+    $report = "SELECT * FROM quarantine WHERE reportid='$reportid'";
     $data = mysqli_query($conn, $report);
     $row = mysqli_fetch_array($data);
-
+    
 ?>
 <html>
 
@@ -48,10 +48,10 @@ include("../php/db_conn.php");
                       <a class="nav-link text-white nav-list " href="../user/home.php">Home</a>
                   </li>
                   <li class="nav-item navi">
-                      <a class="nav-link text-white" href="../user/faci.html">Facilities</a>
+                      <a class="nav-link text-white" href="../user/faci.php">Facilities</a>
                   </li>
                   <li class="nav-item navi">
-                      <a class="nav-link text-white nav-list " href="../user/visitor.html">Visitor</a>
+                      <a class="nav-link text-white nav-list " href="../user/visitor.php">Visitor</a>
                   </li>
                   <li class="nav-item navi">
 
@@ -69,7 +69,7 @@ include("../php/db_conn.php");
                   </li>
 
                   <li class="nav-item navi">
-                      <a class="nav-link text-white" href="../main.html">Logout</a>
+                      <a class="nav-link text-white" href="../Login System/logout.php">Logout</a>
                   </li>
 
 
@@ -88,18 +88,14 @@ include("../php/db_conn.php");
         <div class="card-body p-5">
             <h2 class="text-uppercase text-center mb-5"> <img src="../pic/casaidaman.png" width="130px" alt=""> Quarantine Report</h2>
             <h6 class="fw-light">Update/Delete your resident quarantine status by filling the form below.</h6><br>
-            <form method="post", action="../php/update-report.php" enctype = "multipart/form-data">
+            <form method="post" enctype = "multipart/form-data">
             
             <div class="mb-3">
             <?php               
                 if($row['reportid']==$reportid){
             ?>
-                <label for="username">Username: </label>
-                <input type="text" class="form-control" id ="username" name="username" value="<?php echo $row['username']; ?>">
-            </div>
-            <div class="mb-3">
-                <label for="houseNum">House Number: </label>
-                <input type="text" class="form-control" id ="houseNum" name="houseNum" value=" <?php echo $row['houseNum'] ?>">
+                <label for="houseNum">House Number:</label>
+                <input type="text" class="form-control" id ="houseNum" name="houseNum" value="<?php echo $row['houseNum'];?>">
             </div>
             <div class="mb-3">
                 <label for=stats>What is your status? </label><br>
@@ -110,7 +106,7 @@ include("../php/db_conn.php");
               </div>
               <div class="mb-3">
                 <label for="evidence">Upload your evidence: (Upload the previous file if you wish to not update the evidence)</label>
-                <input type="file" class="form-control" name="evidence" value="<?php echo $row['evidence']; ?>">
+                <input type="file" accept=image/* class="form-control" name="evidence" value="<?php echo $row['evidence']; ?>">
               </div>
               <div class="mb-3">
                 <label for="quarantineStarts">When does your quarantine starts?</label>
@@ -121,7 +117,7 @@ include("../php/db_conn.php");
                 <input type="date" class="form-control" id="quarantineEnds" name="quarantineEnds" value = "<?php echo $row['quarantineEnds']; ?>">
               </div><br>
               <a href="../user/covid-19 status.php" class="btn btn-primary" role="button" >Cancel</a>
-              <button class="btn btn-dark" type="submit" value="update" name ="update">Update</button>
+              <input type = "submit" class='btn btn-dark' role="button" name = "update" type= "submit" value="Update" onclick="return confirm('Are you sure to update this record?');">
                 <?php } ?>
             </form>   
         </div>
@@ -141,8 +137,8 @@ include("../php/db_conn.php");
   
       <div class="links">
           <a href="../user/home.php">home</a>
-          <a href="../user/faci.html">facilities</a>
-          <a href="../user/visitor.html">visitor</a>
+          <a href="../user/faci.php">facilities</a>
+          <a href="../user/visitor.php">visitor</a>
           <a href="../user/covid-19 status.php">covid-19 status</a>
           <a href="../user/profile.php">Profile</a>
   
@@ -159,3 +155,28 @@ include("../php/db_conn.php");
     </body>
 
 </html>
+
+<?php
+
+if(isset($_POST["update"])){
+
+    $username = $_SESSION['username']; 
+    $houseNum = $_POST['houseNum'];
+    $stats = $_POST['stats'];
+    $evidence = $_FILES['evidence']['name'];
+    $quarantineStarts= date('Y-m-d', strtotime($_POST['quarantineStarts']));
+    $quarantineEnds = date('Y-m-d', strtotime($_POST['quarantineEnds']));
+    
+    $update = "UPDATE quarantine SET houseNum='$houseNum', stats='$stats', evidence='$evidence', quarantineStarts='$quarantineStarts', quarantineEnds='$quarantineEnds' WHERE reportid= '$reportid'";
+    $run = mysqli_query($conn, $update);
+
+    if($run){
+        echo "<script> alert('Report updated successfully');
+        window.location.href='../user/covid-19 status.php'</script> ";
+    }
+    else{
+        echo " <script> alert('Record can not be updated.');</script>";
+        echo "Error: ".mysqli_error($conn);
+    }
+}
+?>
