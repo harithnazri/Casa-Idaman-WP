@@ -77,7 +77,7 @@ $data = mysqli_query($conn, $report);
                         <a class="nav-link text-white" href="../admin/manageResident.html">Manage Residents</a>
                       </li>
                       <li class="nav-item navi">
-                        <a class="nav-link text-white nav-list " href="../c19management/c19report.html">Covid Reports</a>
+                        <a class="nav-link text-white nav-list " href="../c19management/c19management.php">Covid Reports</a>
                       </li>
                       <li class="nav-item navi">
                         <a class="nav-link text-white nav-list " href="../c19management/c19validation.php">Covid Validation</a>
