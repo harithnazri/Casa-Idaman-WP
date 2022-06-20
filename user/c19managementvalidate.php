@@ -1,5 +1,16 @@
 <?php
 session_start();
+include("../php/db_conn.php");
+
+    $reportid = $_GET['reportid'];
+    $report = "SELECT * FROM quarantine 
+                INNER JOIN users 
+                ON quarantine.username = users.username 
+                WHERE reportid='$reportid'
+                ORDER BY validation ASC";
+    $data = mysqli_query($conn, $report);
+    $row = mysqli_fetch_array($data);
+
 ?>
 <html>
 
@@ -80,11 +91,19 @@ session_start();
     <div class="card" style="border-radius: 15px; background-color: rgba(251, 251, 251, 0.175);">
         <div class="card-body p-5">
             <h2 class="text-uppercase text-center mb-5"> <img src="../pic/casaidaman.png" width="130px" alt=""> Quarantine Report</h2>
-            <h6 class="fw-light">Report your resident quarantine status by filling the form below.</h6><br>
-            <form method="post", action="../php/process-report.php" enctype = "multipart/form-data">
+            <h6 class="fw-light">Update/Delete your resident quarantine status by filling the form below.</h6><br>
+            <form method="post", action="../php/c19-update-report.php" enctype = "multipart/form-data">
+            
+            <div class="mb-3">
+            <?php               
+                if($row['reportid']==$reportid){
+            ?>
+                <label for="username">Username: </label>
+                <input type="text" class="form-control" id ="username" name="username" value="<?php echo $row['username']; ?>">
+            </div>
             <div class="mb-3">
                 <label for="houseNum">House Number: </label>
-                <input type="text" class="form-control" id ="houseNum" name="houseNum" required>
+                <input type="text" class="form-control" id ="houseNum" name="houseNum" value=" <?php echo $row['houseNum'] ?>">
             </div>
             <div class="mb-3">
                 <label for=stats>What is your status? </label><br>
@@ -94,23 +113,29 @@ session_start();
                 </select>
               </div>
               <div class="mb-3">
-                <label for=status>What is your house unit number? </label><br>
-                <input type="text" class="form-control" id ="" name="myHouseNum">
-              </div>
-              <div class="mb-3">
-                <label for="photo">Upload your evidence:</label>
-                <input type="file" class="form-control" id ="photo" name="myEvidence">
+                <label for="evidence">Upload your evidence: (Upload the previous file if you wish to not update the evidence)</label>
+                <input type="file" class="form-control" name="evidence" value="<?php echo $row['evidence']; ?>">
               </div>
               <div class="mb-3">
                 <label for="quarantineStarts">When does your quarantine starts?</label>
-                <input type="date" class="form-control" id="quarantineStarts" name="quarantineStarts" required>
+                <input type="date" class="form-control" id="quarantineStarts" name="quarantineStarts" value = "<?php echo $row['quarantineStarts']; ?>">
               </div>
               <div class="mb-3">
                <label for="quarantineEnds">When does your quarantine ends?</label>
-                <input type="date" class="form-control" id="quarantineEnds" name="quarantineEnds" required>
-              </div><br>
-              <a href="../user/covid-19 status.php" class="btn btn-primary" role="button" >Cancel</a>
-              <button class="btn btn-dark" type="submit" value="submit">Submit</button>
+                <input type="date" class="form-control" id="quarantineEnds" name="quarantineEnds" value = "<?php echo $row['quarantineEnds']; ?>">
+              </div>
+              <div class="mb-3">
+                
+                <label for="validation">Validation</label><br>
+                  <input type="radio" id="validated" name="validation" value="validated">
+                  <label for="validate">Validate</label><br>
+                  <input type="radio" id="unvalidated" name="validation" value="unvalidated">
+                  <label for="unvalidate">Unvalidate</label><br>
+              </div>
+              <br>
+              <a href="../c19management/c19updatedata.php" class="btn btn-primary" role="button" >Cancel</a>
+              <button class="btn btn-dark" type="submit" value="update" name ="update">Update</button>
+                <?php } ?>
             </form>   
         </div>
     </div>
@@ -128,11 +153,11 @@ session_start();
       </div>
   
       <div class="links">
-          <a href="../user/home.PHP">home</a>
+          <a href="../user/home.php">home</a>
           <a href="../user/faci.html">facilities</a>
           <a href="../user/visitor.html">visitor</a>
-          <a href="../user/covid-19 status.PHP">covid-19 status</a>
-          <a href="../user/profile.PHP">Profile</a>
+          <a href="../user/covid-19 status.php">covid-19 status</a>
+          <a href="../user/profile.php">Profile</a>
   
       </div>
   

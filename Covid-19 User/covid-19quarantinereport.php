@@ -26,7 +26,7 @@ session_start();
   <nav class="navbar fixed-top navbar-expand-lg navbar-light  navigation bg-transparent   ">
       <div class="container">
           <div style="display: flex; align-items:center;">
-              <a class="navbar-brand" href="../user/home.php"><img class="logo" src="../pic/casaidaman.png" width="180px" alt=""></a>
+              <a class="navbar-brand" href="../user/home.html"><img class="logo" src="../pic/casaidaman.png" width="180px" alt=""></a>
               <h3 style="font-weight: 800; font-size: 24px; color: #ffffff;">Casa Idaman</h3>
           </div>
 
@@ -38,7 +38,7 @@ session_start();
           <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ms-auto ">
                   <li class="nav-item navi">
-                      <a class="nav-link text-white nav-list " href="../user/home.php">Home</a>
+                      <a class="nav-link text-white nav-list " href="../user/home.html">Home</a>
                   </li>
                   <li class="nav-item navi">
                       <a class="nav-link text-white" href="../user/faci.html">Facilities</a>
@@ -48,12 +48,12 @@ session_start();
                   </li>
                   <li class="nav-item navi">
 
-                      <a class="nav-link text-white" href="../user/covid-19 status.php">Covid-19 Status</a>
+                      <a class="nav-link text-white" href="../Covid-19 User/covid-19status.php">Covid-19 Status</a>
 
                   </li>
                   <li class="nav-item navi">
 
-                      <a class="nav-link text-white" href="../user/profile.php"><i
+                      <a class="nav-link text-white" href="../user/profile.html"><i
                               class="fa-solid fa-circle-user"></i>
                               <?php
                                 echo $_SESSION['username'];
@@ -83,6 +83,10 @@ session_start();
             <h6 class="fw-light">Report your resident quarantine status by filling the form below.</h6><br>
             <form method="post", action="../php/process-report.php" enctype = "multipart/form-data">
             <div class="mb-3">
+                <label for="username">Username: </label>
+                <input type="text" class="form-control" id ="username" name="username" required>
+            </div>
+            <div class="mb-3">
                 <label for="houseNum">House Number: </label>
                 <input type="text" class="form-control" id ="houseNum" name="houseNum" required>
             </div>
@@ -94,12 +98,8 @@ session_start();
                 </select>
               </div>
               <div class="mb-3">
-                <label for=status>What is your house unit number? </label><br>
-                <input type="text" class="form-control" id ="" name="myHouseNum">
-              </div>
-              <div class="mb-3">
-                <label for="photo">Upload your evidence:</label>
-                <input type="file" class="form-control" id ="photo" name="myEvidence">
+                <label for="evidence">Upload your evidence:</label>
+                <input type="file" class="form-control" name="evidence" required>
               </div>
               <div class="mb-3">
                 <label for="quarantineStarts">When does your quarantine starts?</label>
@@ -109,7 +109,7 @@ session_start();
                <label for="quarantineEnds">When does your quarantine ends?</label>
                 <input type="date" class="form-control" id="quarantineEnds" name="quarantineEnds" required>
               </div><br>
-              <a href="../user/covid-19 status.php" class="btn btn-primary" role="button" >Cancel</a>
+              <a href="../Covid-19 User/covid-19status.php" class="btn btn-primary" role="button" >Cancel</a>
               <button class="btn btn-dark" type="submit" value="submit">Submit</button>
             </form>   
         </div>
@@ -128,11 +128,11 @@ session_start();
       </div>
   
       <div class="links">
-          <a href="../user/home.PHP">home</a>
+          <a href="../user/home.html">home</a>
           <a href="../user/faci.html">facilities</a>
           <a href="../user/visitor.html">visitor</a>
-          <a href="../user/covid-19 status.PHP">covid-19 status</a>
-          <a href="../user/profile.PHP">Profile</a>
+          <a href="../user/covid-19 status.html">covid-19 status</a>
+          <a href="../user/profile.html">Profile</a>
   
       </div>
   

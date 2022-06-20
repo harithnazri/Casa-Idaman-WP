@@ -88,7 +88,7 @@ include("../php/db_conn.php");
         <div class="card-body p-5">
             <h2 class="text-uppercase text-center mb-5"> <img src="../pic/casaidaman.png" width="130px" alt=""> Quarantine Report</h2>
             <h6 class="fw-light">Update/Delete your resident quarantine status by filling the form below.</h6><br>
-            <form method="post", action="../php/update_report.php" enctype = "multipart/form-data">
+            <form method="post", action="../php/update-report.php" enctype = "multipart/form-data">
             
             <div class="mb-3">
             <?php               

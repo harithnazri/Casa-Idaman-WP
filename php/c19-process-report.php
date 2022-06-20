@@ -24,7 +24,7 @@ include("db_conn.php");
         copy($evidencetemp, $target);
         
         if($run){
-            header("Location: ../Covid-19%20User/covid-19status.php");
+            header("Location: ../c19management/c19updatedata.php");
             
         }
         else{
@@ -32,7 +32,7 @@ include("db_conn.php");
         }  
     }
     else{
-        header("Location: ../Quarantine%20Report/covid-19quarantinereport.php");
+        header("Location: ../user/c19qreport.php");
         
     }
 ?>

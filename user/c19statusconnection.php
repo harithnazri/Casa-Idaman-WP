@@ -1,4 +1,7 @@
 <?php 
+    session_start();
+    include "db_conn.php";
+    
     $c19status = $_POST['c19status'];
     $myEvidence = $_POST['myEvidence'];
     $myQuarantineStarts = $_POST['myQuarantineStarts'];
@@ -10,8 +13,8 @@
         die('Connection Failed : '.$conn->connect_error);
 
     }else{
-        $stmt=$conn->prepare("insert into quarantine_user(c19status, myEvidence, myQuarantineStarts, myQuarantineEnds) 
-        values(?,?,?,?)");
+        $stmt=$conn->prepare("INSERT INTO quarantine(c19status, myEvidence, myQuarantineStarts, myQuarantineEnds) 
+                            values(?,?,?,?)");
         $stmt->bind_param("sssss",$c19status,$myEvidence,$myQuarantineStarts,$myQuarantineEnds);
         $stmt->execute();
         echo "Succesfully Registered Quarantine Status";
