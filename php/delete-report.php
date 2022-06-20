@@ -7,10 +7,12 @@ include("db_conn.php");
     $run = mysqli_query($conn, $sql);
 
     if($run){
-        header("Location: ../Covid-19%20User/covid-19status.php");
+        echo "<script> alert('Report deleted successfully');
+        window.location.href='../user/covid-19 status.php'</script> ";
     }
     else{
-        echo "Error: ".mysqli_error($conn);
+        echo "Report can not be updated.";
+        echo "Error: " . mysqli_error($conn);
     }
 
 ?>
