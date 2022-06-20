@@ -41,10 +41,10 @@ session_start();
                       <a class="nav-link text-white nav-list " href="../user/home.php">Home</a>
                   </li>
                   <li class="nav-item navi">
-                      <a class="nav-link text-white" href="../user/faci.html">Facilities</a>
+                      <a class="nav-link text-white" href="../user/faci.php">Facilities</a>
                   </li>
                   <li class="nav-item navi">
-                      <a class="nav-link text-white nav-list " href="../user/visitor.html">Visitor</a>
+                      <a class="nav-link text-white nav-list " href="../user/visitor.php">Visitor</a>
                   </li>
                   <li class="nav-item navi">
 
@@ -62,7 +62,7 @@ session_start();
                   </li>
 
                   <li class="nav-item navi">
-                      <a class="nav-link text-white" href="../main.html">Logout</a>
+                      <a class="nav-link text-white" href="../Login System/logout.php">Logout</a>
                   </li>
 
 
@@ -94,12 +94,8 @@ session_start();
                 </select>
               </div>
               <div class="mb-3">
-                <label for=status>What is your house unit number? </label><br>
-                <input type="text" class="form-control" id ="" name="myHouseNum">
-              </div>
-              <div class="mb-3">
-                <label for="photo">Upload your evidence:</label>
-                <input type="file" class="form-control" id ="photo" name="myEvidence">
+                <label for="evidence">Upload your evidence:</label>
+                <input type="file" class="form-control" name="evidence" required>
               </div>
               <div class="mb-3">
                 <label for="quarantineStarts">When does your quarantine starts?</label>
@@ -128,11 +124,11 @@ session_start();
       </div>
   
       <div class="links">
-          <a href="../user/home.PHP">home</a>
-          <a href="../user/faci.html">facilities</a>
-          <a href="../user/visitor.html">visitor</a>
-          <a href="../user/covid-19 status.PHP">covid-19 status</a>
-          <a href="../user/profile.PHP">Profile</a>
+          <a href="../user/home.php">home</a>
+          <a href="../user/faci.php">facilities</a>
+          <a href="../user/visitor.php">visitor</a>
+          <a href="../user/covid-19 status.php">covid-19 status</a>
+          <a href="../user/profile.php">Profile</a>
   
       </div>
   
@@ -147,3 +143,4 @@ session_start();
     </body>
 
 </html>
+
