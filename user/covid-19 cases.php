@@ -1,3 +1,13 @@
+<?php   
+session_start();
+include("../php/db_conn.php");
+
+    $sql = "SELECT * FROM coviddailycases";
+    $run = mysqli_query($conn, $sql);
+    
+
+?>
+
 <html>
 	<head>
         <meta charset="UTF-8">
@@ -15,74 +25,71 @@
     <br>
     <header class="container ">
 
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light  navigation bg-transparent   ">
-            <div class="container">
-                <div style="display: flex; align-items:center;">
-                    <a class="navbar-brand" href="../user/home.html"><img class="logo" src="../pic/casaidaman.png" width="180px" alt=""></a>
-                    <h3 style="font-weight: 800; font-size: 24px; color: #ffffff;">Casa Idaman</h3>
-                </div>
-      
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class=" navbar-toggler-icon "><i class="fas fa-bars"
-                            style="color:#fff; font-size:28px;"></i></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto ">
-                        <li class="nav-item navi">
-                            <a class="nav-link text-white nav-list " href="../user/home.html">Home</a>
-                        </li>
-                        <li class="nav-item navi">
-                            <a class="nav-link text-white" href="../user/faci.html">Facilities</a>
-                        </li>
-                        <li class="nav-item navi">
-                            <a class="nav-link text-white nav-list " href="../user/visitor.html">Visitor</a>
-                        </li>
-                        <li class="nav-item navi">
-      
-                            <a class="nav-link text-white" href="../user/covid-19 status.html">Covid-19 Status</a>
-      
-                        </li>
-                        <li class="nav-item navi">
-      
-                            <a class="nav-link text-white" href="../user/profile.html"><i
-                                    class="fa-solid fa-circle-user"></i> Sam</a>
-      
-                        </li>
-      
-                        <li class="nav-item navi">
-                            <a class="nav-link text-white" href="../main.html">Logout</a>
-                        </li>
-      
-      
-                    </ul>
-                </div>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light  navigation bg-transparent   ">
+        <div class="container">
+            <div style="display: flex; align-items:center;">
+                <a class="navbar-brand" href="../user/home.php"><img class="logo" src="../pic/casaidaman.png" width="180px" alt=""></a>
+                <h3 style="font-weight: 800; font-size: 24px; color: #ffffff;">Casa Idaman</h3>
             </div>
-        </nav>
-      
-      </header>
 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=" navbar-toggler-icon "><i class="fas fa-bars"
+                        style="color:#fff; font-size:28px;"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item navi">
+                        <a class="nav-link text-white nav-list " href="../user/home.php">Home</a>
+                    </li>
+                    <li class="nav-item navi">
+                        <a class="nav-link text-white" href="../user/faci.php">Facilities</a>
+                    </li>
+                    <li class="nav-item navi">
+                        <a class="nav-link text-white nav-list " href="../user/visitor.php">Visitor</a>
+                    </li>
+                    <li class="nav-item navi">
+
+                        <a class="nav-link text-white" href="../Covid-19 User/covid-19status.php">Covid-19 Status</a>
+
+                    </li>
+                    <li class="nav-item navi">
+
+                        <a class="nav-link text-white nav-list " style="text-transform:capitalize;" href="../profile.php"><i class="fa-solid fa-circle-user"> </i>
+                        <?php
+                        echo $_SESSION['username']; ?> </a>
+                    
+                    </li>
+                    <li class="nav-item navi">
+                        <a class="nav-link text-white" href="../Login System/logout.php">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </header>
+    <?php
+    date_default_timezone_set('Asia/Kuala_Lumpur');
+    ?>
     <body class="bg-dark">
         <br><br><br><br>
         <div class="col d-flex justify-content-center">
-            <div class="col-xs-6 col-md-10 ">
+            <div class="col-md-8 ">
                 <div class="card" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.83);">
-                    <div class="card-body p-4">
-                        <h1 class="text-uppercase text-center"><img src="../pic/casaidaman.png" width="130px" alt="">Covid-19 Cases</h1><br>
-                        <h2 class="text-center">Today's Cases: 20</h2><br><br>
-                        <h3 class="text-uppercase text-center">Weekly</h3>
-                        <canvas id="covidChart"></canvas><br><br><br>
-                        <h3 class="text-uppercase text-center">Monthly</h3>
-                        <canvas id="covidChart2"></canvas><br><br>
+                    <div class="card-body p-5">
+                        <h1 class="text-uppercase text-center"><img src="../pic/casaidaman.png" width="130px" alt="">Daily Covid-19 Cases</h1><br>                        
+                        <h3 class="text-uppercase text-center"><?php echo date("l")." "."(".(date("Y-m-d")).")";?></h3><br>
+                        
+                            <canvas id="covidChart2"></canvas><br><br>
+                        
                     </div>
                     
                 </div>
             </div>
         </div><br><br>
         <div class="col d-flex justify-content-center">
-            <div class="col-xs-6 col-md-10 ">
+            <div class="col-md-8 ">
                 <div class="card" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.83);">
-                    <div class="card-body p-4">
+                    <div class="card-body p-5">
                         <div class="justify-content-center text-center">
                             <h2 class="section-heading text-uppercase ">Malaysia's Covid-19 Data</h2>
                             <h3 class="section-subheading text-black ">The official Malaysia government website for data and insights on COVID-19.</h3>
@@ -106,11 +113,11 @@
             </div>
         
             <div class="links">
-                <a href="../user/home.html">home</a>
-                <a href="../user/faci.html">facilities</a>
-                <a href="../user/visitor.html">visitor</a>
-                <a href="../user/covid-19 status.html">covid-19 status</a>
-                <a href="../user/profile.html">Profile</a>
+                <a href="../user/home.php">home</a>
+                <a href="../user/faci.php">facilities</a>
+                <a href="../user/visitor.php">visitor</a>
+                <a href="../user/covid-19 status.php">covid-19 status</a>
+                <a href="../user/profile.php">Profile</a>
         
             </div>
         
@@ -118,7 +125,11 @@
         
         </section>
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
+        
    <script> 
         var ctx = document.getElementById('covidChart').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -127,7 +138,7 @@
                 labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday'],
                 datasets: [{
                     label: 'Number of Cases',
-                    data: [20, 0, 0, 0, 0, 0,0],
+                    data: [],
                     backgroundColor: [
                     'rgba(54, 162, 235, 0.4)',
                     'rgba(54, 162, 235, 0.4)',
@@ -146,16 +157,20 @@
                     'rgba(54, 162, 235, 1)',
                     'rgba(54, 162, 235, 1)'
                     ],
-                    borderWidth: 1
+                    borderWidth: 1,
+                    barThickness: 'flex'
                 }]
             },
             options: {
+                responsive:true,
                 scales: {
-                    y: {
-                        beginAtZero:true
+                    yAxes: [{
+                        ticks:{
+                            beginAtZero:true
+                        }
+                    }]
+                }
             }
-            }
-        }
         });
     </script>
     <script> 
@@ -163,14 +178,13 @@
         var myChart = new Chart(ct, {
             type: 'bar',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                labels: ['Block A','Block B','Total'],
                 datasets: [{
                     label: 'Number of Cases',
-                    data: [180,147,156 ,90, 0, 0],
+                    data: [<?php while($data = mysqli_fetch_array($run)){
+                            if($data['updateDate'] == date("Y-m-d")){ ?><?php echo $data['blockA']; ?>,<?php echo $data['blockB']; ?>,<?php echo $data['total']; ?>
+                            <?php }} ?>],
                     backgroundColor: [
-                    'rgba(54, 162, 235, 0.4)',
-                    'rgba(54, 162, 235, 0.4)',
-                    'rgba(54, 162, 235, 0.4)',
                     'rgba(54, 162, 235, 0.4)',
                     'rgba(54, 162, 235, 0.4)',
                     'rgba(54, 162, 235, 0.4)'
@@ -178,19 +192,20 @@
                     borderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
                     'rgba(54, 162, 235, 1)'
                     ],
-                    borderWidth: 1
-                }]
+                    borderWidth: 1,
+                    barThickness: 'flex'
+                }]  
             },
             options: {
+                responsive: true,
                 scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+                    yAxes: [{
+                        ticks:{
+                            beginAtZero:true
+                        }
+                    }]
                 }
             }
         });
