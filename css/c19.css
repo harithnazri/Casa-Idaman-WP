@@ -76,16 +76,37 @@
 }
 #updatedata{
     font-size: 70px;
+    font-weight: 700;
     text-align: center;
     padding: 40px;
 }
 #updatedataform{
-    background-color: rgba(214, 214, 214, 0.877);
+    
     border-radius: 25px;
     
 }
 #update{
     padding: 20px;
+}
+#header1{
+    font-size: 50px;
+    font-weight: 700;
+}
+#header2{
+    font-size: 35px;
+    font-weight: 500;
+}
+#total{
+    font-size: 25px;
+    font-weight: 300;
+}
+#subtotal{
+    font-size: 20px;
+    font-weight: 100;
+}
+#roundedrow{
+    border-radius: 25px;
+    margin: 20px;
 }
 
 /*Footer*/

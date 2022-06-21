@@ -31,7 +31,7 @@ if (isset($_POST["submit"])) {
             if ($result) {
                 echo "<script>alert('Visitor pass generated successfully');</script>";
                 move_uploaded_file($photo_tmp_name, "../uploads/" . $photo_new_name);
-                header("Location: ../user/visitor.php");
+                header("Location: ../user/visitorPass.php");
             } else {
                 echo "<script>alert('Visitor cannot be generated.');</script>";
                 echo  $conn->error;

@@ -56,7 +56,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `users` and 'quarantine_report'
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `fullname`, `email`, `phonenumber`, `homenumber`, `photo`) VALUES
@@ -107,7 +107,13 @@ INSERT INTO `facilities` (`facilityID`, `facilityName`) VALUES
 (4, 'Barbeque Pit');
 
 -- --------------------------------------------------------
-
+-- Table structure for table `coviddailycases`
+CREATE TABLE coviddailycases(
+updateDate varchar(255) NOT NULL PRIMARY KEY,
+blockA int NOT NULL,
+blockB int NOT NULL,
+total int NOT NULL  
+)
 --
 -- Table structure for table `reservation`
 --
@@ -130,6 +136,12 @@ CREATE TABLE `reservation` (
 INSERT INTO `visitor_pass` (`id`, `email`, `name`, `address`, `ic`, `phone`, `photo`) VALUES
 (3, 'mnaimhaziq@gmail.com', 'Naim Haziq', 'No 380, Lorong KTC 4/10,', '321323123', '131231231', '');
 
+-- recheck
+SELECT * FROM `q_report` WHERE (`q_report`.`reportID` = 3 AND `q_report`.`username` = 'izzat') OR (`q_report`.`reportID` = 6 AND `q_report`.`username` = 'lee')
+
+INSERT INTO `q_report` (`reportID`, `username`, `houseNum`, `phoneNum`, `qStart`, `qEnd`, `type`) VALUES 
+(NULL, 'samad', 'A420', '01122334766', '2022-06-19', '2022-06-26', 'C-19 Positive');
+
 --
 -- Indexes for dumped tables
 --
@@ -138,7 +150,9 @@ INSERT INTO `visitor_pass` (`id`, `email`, `name`, `address`, `ic`, `phone`, `ph
 -- Indexes for table `quarantine`
 --
 ALTER TABLE `quarantine`
-  ADD PRIMARY KEY (`reportid`);
+  ADD PRIMARY KEY (`reportid`),
+  ADD `validation` VARCHAR(255) NULL DEFAULT '\'unvalidated\' ' AFTER `quarantineEnds`;
+
 
 --
 -- Indexes for table `users`

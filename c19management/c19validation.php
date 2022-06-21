@@ -1,4 +1,27 @@
-<!--insert footer, header-->
+<?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "my_db";
+
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = 'SELECT * 
+          FROM quarantine
+          ORDER BY validation ASC';
+
+  $result = mysqli_query($conn, $sql);
+  #$quarantine_report = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+  
+  
+ print_r($quarantine_report);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,13 +73,13 @@
                 <a class="nav-link text-white" href="../admin/manageResident.html">Manage Residents</a>
               </li>
               <li class="nav-item navi">
-                <a class="nav-link text-white nav-list " href="../admin/c19management.html">Covid Reports</a>
+                <a class="nav-link text-white nav-list " href="../c19management/c19report.html">Covid Reports</a>
               </li>
               <li class="nav-item navi">
-                <a class="nav-link text-white nav-list " href="../admin/c19validation.html">Covid Validation</a>
+                <a class="nav-link text-white nav-list " href="../c19management/c19validation.php">Covid Validation</a>
               </li>
               <li class="nav-item navi">
-                <a class="nav-link text-white nav-list " href="../admin/c19updatedata.html">Covid Data Update</a>
+                <a class="nav-link text-white nav-list " href="../c19management/c19updatedata.php">Covid Data Update</a>
               </li>
               <li class="nav-item navi">
                 <a class="nav-link text-white" href="../main.html">Logout</a>
@@ -75,9 +98,8 @@
     <main>
 
       <section class='container-lg mt-5'>
-        
         <h1 class="mb-3 gap-5 text-white">Covid-19 & Quarantine Validation Page</h1>
-        <p class="text-white">description askdjkhaldkj lkd jlaks djladkj laksd jlakdj alkdjalkd alkdj alskdj alsdjkaldkj aldkjasdl kajd lkas jdlakdsj lakdj alkdjalksd alsdkj aldkj asldkjasld</p>
+        <p id="total" class="text-white">The table below shows the covid-19 and quarantine reports that requires validation.</p>
       </section>
 
       <!--update-->
@@ -86,41 +108,56 @@
         
           <div class="col gap-3">
                        
-            <div class="card" style="height:540px; background-color: rgba(251, 251, 251, 0.175); border-radius: 50px;">
+            <div class="card" style="height:540px; background-color: rgba(251, 251, 251, 0.175); border-radius: 15px;">
               <div class="card-body p-5">
-                  <h3>Covid-19 & Quarantine Index</h3><br>
-                  <h5>Report your quarantine status here.</h5><br>
-                  
-                  <table class="table table-secondary table-striped table-bordered ">
-                      <thead>
-                      <tr>
-                          <th scope="col"></th>
-                          <th scope="col">Report ID</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Type of Case</th>
-                          <th scope="col">Quarantine Start Date</th>
-                          <th scope="col">Quarantine End Date</th>
-                          <th scope="col">Validation Status</th>
-                          <th scope="col">Profile</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                          <th scope="row">1</th>
-                          <td>1312</td>
-                          <td>Abdul Faris Jabba</td>
-                          <td>Covid-19 Positive</td>
-                          <td>25/4/2022</td>
-                          <td>2/5/2022</td>
-                          <td>Validated</td>
-                          <td>
-                            <button class="btn btn-primary" onclick="">View Profile</button>                          
-                          </td>
-                      </tbody>
+                <div class="row">
+                  <h2 id="header2">Casa Idaman Covid-19 & Quarantine Index</h2>
+                  <p id="total">Report your quarantine status here.</p><br>
+                  <hr>
+                </div>
+                <div class="row">
+                  <table class="table table-bordered border-secondary table-striped table-hover bg-light text-center table-responsive">
+                    <thead>
+                    <tr>
+                        <th scope="col">Report ID</th>
+                        <th scope="col">Type of Case</th>
+                        <th scope="col">Quarantine Start Date</th>
+                        <th scope="col">Quarantine End Date</th>
+                        <th scope="col">Evidence</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">House Number</th>
+                        <th scope="col">Validation Status</th>
+                        <th scope="col">Validation</th>
+                    </tr>
+                    </thead>
+                    <tbody><?php 
+                    if($result->num_rows>0){
+                      while($row = $result-> fetch_assoc()){
+                        echo "<tr>
+                          <td>" . $row['reportid'] . "</td>
+                          <td>" . $row['stats'] . "</td>
+                          <td>" . $row['quarantineStarts'] . "</td>
+                          <td>" . $row['quarantineEnds'] . "</td>
+                          <td>" . $row['evidence'] . "</td>
+                          <td>" . $row['username'] . "</td>
+                          <td>" . $row['houseNum'] . "</td>
+                          <td>" . $row['validation'] . "</td>
+                          <td>" . 
+                        "<form>
+                         <input type=\"submit\" value=\"Validate\">
+                        </form></td></tr>";
+                        
+                      }
+                    } 
+                    mysqli_close($conn);
+                    ?>
+                    </tr>
+                    </tbody>
                   </table> 
+                </div>
               </div>
           </div>
-          <br><hr>
+          <br>
           </div>
         </div>
       </section>

@@ -57,7 +57,7 @@
                 <a class="nav-link text-white nav-list " href="../admin/c19updatedata.html">Covid Data Update</a>
               </li>
               <li class="nav-item navi">
-                <a class="nav-link text-white" href="../main.html">Logout</a>
+                <a class="nav-link text-white" href="../Login System/logout.php">Logout</a>
               </li>
             </ul>
           </div>
@@ -96,7 +96,7 @@
             <h4 class="mb-3 gap-5">Update Daily Covid-19 Status</h4>
             
             <button class="btn btn-danger" onclick="dailyCaseButton()">Update Daily Cases here</button>
-            <form id="update"class="needs-validation" novalidate style="display: none;" >
+            <form id="update"class="needs-validation" novalidate style="display: none;" method="post", action="../php/process-covid.php">
               <div class="row g-3 gap-2 bg-light" style="padding: 20px; color: black;">
 
                 <form>
@@ -107,49 +107,25 @@
                     document.getElementById("current_date").innerHTML = Date();
                     </script>
                   <div class="form-group">
+                    <label for="updateDate">Date:</label>
+                    <input type="date" class="form-control" id="updateDate" name="updateDate">
+                  </div>
+                  <div class="form-group">
                     <label for="DCases">Daily number of <span><b>OVERALL</b></span> Covid-19 cases:</label>
-                    <input type="number" class="form-control" id="DCases1" placeholder="Example: 1,2,3,4...">
+                    <input type="number" class="form-control" id="DCases1" placeholder="Example: 1,2,3,4..." name="DCases1">
                   </div>
                   <div class="form-group">
                     <label for="DCasesA">Daily number of <span><b>BLOCK A</b></span> Covid-19 cases:</label>
-                    <input type="number" class="form-control" id="DCasesA1" placeholder="Example: 1,2,3,4...">
+                    <input type="number" class="form-control" id="DCasesA1" placeholder="Example: 1,2,3,4..." name = "DCasesA1">
                   </div>
                   <div class="form-group">
                     <label for="DCasesB">Daily number of <span><b>BLOCK B</b></span> Covid-19 cases:</label>
-                    <input type="number" class="form-control" id="DCasesB1" placeholder="Example: 1,2,3,4...">
+                    <input type="number" class="form-control" id="DCasesB1" placeholder="Example: 1,2,3,4..." name = "DCasesB1">
                   </div>
-                  <h3>Month: April</h3>
-                    <div class="form-group">
-                    <label for="MCases">Monthly number of <span><b>OVERALL</b></span> Covid-19 cases:</label>
-                    <input type="number" class="form-control" id="MCases1" placeholder="Example: 1,2,3,4...">
-                  </div>
-                  <div class="form-group">
-                    <label for="MCasesA">Monthly number of <span><b>BLOCK A</b></span> Covid-19 cases:</label>
-                    <input type="number" class="form-control" id="MCasesA1" placeholder="Example: 1,2,3,4...">
-                  </div>
-                  <div class="form-group">
-                    <label for="MCasesB">Monthly number of <span><b>BLOCK B</b></span> Covid-19 cases:</label>
-                    <input type="number" class="form-control" id="MCasesB1" placeholder="Example: 1,2,3,4...">
-                  </div>
-                  <button type="submit" class="btn btn-primary" onclick="getInputValue();">Submit</button>
-                  <script>
-
-                    function getInputValue(){
-                        // Selecting the input element and get its value 
-                        var DCasesO = document.getElementById("DCases1").value;
-                        var DCasesA = document.getElementById("DCasesA1").value;
-                        var DCasesB = document.getElementById("DCasesB1").value;
-                        var MCasesO = document.getElementById("MCases1").value;
-                        var MCasesA = document.getElementById("MCasesA1").value;
-                        var MCasesB = document.getElementById("MCasesB1").value;
-                        
-                        // Displaying the value
-                        alert("You have submitted:\n"+"Daily Cases:"+DCasesO+"\nDaily Cases Block A:"+DCasesA+"\nDaily Cases Block B:"+DCasesB+"\nMonthly Cases:"+MCasesO+"\nMonthly Cases Block A:"+MCasesA+"\nMonthly Cases Block B:"+MCasesB);
-                    }
-                </script>
+                  <button type="submit" class="btn btn-primary" value="submit">Submit</button>
                 </form>
-                
             </form>
+
             <script>
               function dailyCaseButton() {
                 var x = document.getElementById("update");
@@ -163,33 +139,6 @@
           </div>
         </div>
       </section>
-
-      <section> <!-- Test Section-->
-        <hr>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-4 text-white" align="center">
-              <h4 align="center">Resident Quarantine Status</h4>
-              <button class="btn btn-danger" onclick="myFunction()">View Resident Quarantine Status</button>
-              <!--add link to another page-->
-            </div>
-            <div class="col-sm-4 text-white" align="center">
-              <h5 align="center">Food Delivery Status</h5>
-                <button class="btn btn-danger" onclick="myFunction()">View Food Delivery Status</button>
-                <!--add link to another page-->
-            </div>
-            <div class="col-sm-4 text-white" align="center">
-              <h3 align="center">Update Daily Cases</h3>
-                <button class="btn btn-danger" onclick="myFunction()">Update Daily Cases</button>
-                <!--add link to another page-->
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      
-      
-      
     </main> 
   
 

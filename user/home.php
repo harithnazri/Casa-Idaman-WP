@@ -59,7 +59,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['id'])) {   ?>
                                     <a class="nav-link text-white" href="#">Covid-19 Reports</a>
                                 </li>
                                 <li class="nav-item navi">
-                                    <a class="nav-link text-white nav-list " href="..user/profile.php"><i class="fa-solid fa-circle-user"> </i>
+                                    <a class="nav-link text-white nav-list " href="../user/profile.php"><i class="fa-solid fa-circle-user"> </i>
                                         <?php
                                         echo $_SESSION['username']; ?>
                                     </a>
@@ -77,9 +77,23 @@ if (isset($_SESSION['username']) && isset($_SESSION['id'])) {   ?>
 
             </header>
 
-            <div class="container d-flex justify-content-center align-items-center text-white" style="min-height: 100vh">
-                <div class="card " style="width: 18rem;">
-                    <img src="../pic/admin-default.png" class="card-img-top" alt="admin image">
+
+            <div class="container d-flex justify-content-center align-items-center text-white" style="  min-height: 100vh;">
+                <div class="card d-flex flex-column align-items-center text-center " style="width: 18rem;">
+                    <?php
+
+                    $sql = "SELECT * FROM users WHERE id='{$_SESSION["id"]}'";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                    ?>
+                            <img src="../uploads/<?php echo $row["photo"]; ?>" alt="User" class="rounded-circle " width="150">
+
+                    <?php
+                        }
+                    }
+                    ?>
                     <div class="card-body text-center">
                         <h5 class="card-title">
                             <?= $_SESSION['name'] ?>
